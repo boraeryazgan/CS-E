@@ -1,0 +1,22 @@
+<h1>Kayıt Ol</h1>
+<%= form_with model: @user, url: signup_path, local: true do |f| %>
+  <div>
+    <%= f.label :username, "Kullanıcı Adı" %>
+    <%= f.text_field :username %>
+  </div>
+  <div>
+    <%= f.label :email, "E-posta" %>
+    <%= f.email_field :email %>
+  </div>
+  <div>
+    <%= f.label :password, "Şifre" %>
+    <%= f.password_field :password %>
+  </div>
+  <div>
+    <%= f.label :password_confirmation, "Şifre (Tekrar)" %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div>
+    <%= f.submit "Kayıt Ol" %>
+  </div>
+<% end %>

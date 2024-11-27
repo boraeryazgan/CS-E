@@ -1,0 +1,8 @@
+<h1>Profil</h1>
+<p><strong>Biyografi:</strong> <%= @profile.bio %></p>
+<p><strong>Konum:</strong> <%= @profile.location %></p>
+<p><strong>Yaş:</strong> <%= @profile.age %></p>
+<p><strong>Cinsiyet:</strong> <%= @profile.gender %></p>
+<p><strong>İlgi Alanları:</strong> <%= @profile.interests %></p>
+
+<%= link_to "Profili Düzenle", edit_profile_path %>
