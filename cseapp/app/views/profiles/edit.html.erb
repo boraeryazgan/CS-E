@@ -1,0 +1,26 @@
+<h1>Profil Düzenle</h1>
+<%= form_with model: @profile, url: profile_path, method: :patch, local: true do |f| %>
+  <div>
+    <%= f.label :bio, "Biyografi" %>
+    <%= f.text_area :bio %>
+  </div>
+  <div>
+    <%= f.label :location, "Konum" %>
+    <%= f.text_field :location %>
+  </div>
+  <div>
+    <%= f.label :age, "Yaş" %>
+    <%= f.number_field :age %>
+  </div>
+  <div>
+    <%= f.label :gender, "Cinsiyet" %>
+    <%= f.select :gender, ["Erkek", "Kadın", "Diğer"], prompt: "Seçin" %>
+  </div>
+  <div>
+    <%= f.label :interests, "İlgi Alanları" %>
+    <%= f.text_area :interests %>
+  </div>
+  <div>
+    <%= f.submit "Güncelle" %>
+  </div>
+<% end %>
