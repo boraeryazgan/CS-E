@@ -1,6 +1,8 @@
 class User < ApplicationRecord
     has_secure_password
-  
+    def active?
+      active
+    end
     has_one :profile, dependent: :destroy
   
     validates :username, presence: true, uniqueness: { case_sensitive: false }, length: { minimum: 3, maximum: 25 }

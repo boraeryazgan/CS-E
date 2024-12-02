@@ -14,9 +14,12 @@ class USettingsController < ApplicationController
   end
 
   def deactivate_account
-    current_user.update(active: false)
-    reset_session
-    redirect_to root_path, notice: "Your account has been deactivated."
+    if current_user.update(active: false)
+      reset_session
+      redirect_to root_path, notice: "Your account has been deactivated."
+    else
+      redirect_to settings_path, alert: "An error occurred while deactivating your account."
+    end
   end
 
   private
