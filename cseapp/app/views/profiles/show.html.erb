@@ -1,8 +1,13 @@
-<h1>Profil</h1>
-<p><strong>Biyografi:</strong> <%= @profile.bio %></p>
-<p><strong>Konum:</strong> <%= @profile.location %></p>
-<p><strong>Yaş:</strong> <%= @profile.age %></p>
-<p><strong>Cinsiyet:</strong> <%= @profile.gender %></p>
-<p><strong>İlgi Alanları:</strong> <%= @profile.interests %></p>
+<div class="profile-container">
+  <h1><%= @profile.user.username %>'s Profile</h1>
 
-<%= link_to "Profili Düzenle", edit_profile_path %>
+  
+    <img src="https://avatars.githubusercontent.com/u/92815050?v=4"></img>
+  <p><strong>Biography:</strong> <%= @profile.bio.presence || "No biography added yet." %></p>
+  <p><strong>Location:</strong> <%= @profile.location.presence || "Location not provided." %></p>
+  <p><strong>Age:</strong> <%= @profile.age.presence || "Age not specified." %></p>
+  <p><strong>Gender:</strong> <%= @profile.gender.presence || "Gender not specified." %></p>
+
+  <%= link_to "Edit Profile", edit_profile_path, class: "btn btn-primary" %>
+  <%= link_to "Settings", settings_path, class: "btn btn-secondary" %>
+</div>

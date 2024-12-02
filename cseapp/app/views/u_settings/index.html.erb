@@ -1,0 +1,24 @@
+<h1>Account Settings</h1>
+
+<div>
+  <h2>Change Password</h2>
+  <%= form_with url: settings_update_password_path, method: :patch, local: true do |f| %>
+    <div>
+      <%= f.label :password, "New Password" %>
+      <%= f.password_field :password, class: "form-control" %>
+    </div>
+    <div>
+      <%= f.label :password_confirmation, "Confirm Password" %>
+      <%= f.password_field :password_confirmation, class: "form-control" %>
+    </div>
+    <%= f.submit "Update Password", class: "btn btn-primary mt-3" %>
+  <% end %>
+</div>
+
+<hr>
+
+<div>
+  <h2>Deactivate Account</h2>
+  <p>If you deactivate your account, you will no longer be able to log in. This action can be reversed by contacting support.</p>
+  <%= button_to "Deactivate Account", settings_deactivate_path, method: :post, class: "btn btn-danger" %>
+</div>
