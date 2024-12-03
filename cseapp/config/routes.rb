@@ -6,5 +6,10 @@ Rails.application.routes.draw do
   post "login", to: "users#login"
   delete "logout", to: "users#logout"
 
-  resource :profile, only: [:show, :edit, :update]
+  get "settings", to: "u_settings#index"
+patch "settings/update_password", to: "u_settings#update_password"
+post "settings/deactivate", to: "u_settings#deactivate_account"
+resource :profile, only: [:show, :edit, :update], path: 'profile'
+  resources :friendships, only: [:create, :update, :destroy]
+  resources :blocks, only: [:create, :destroy]
 end
