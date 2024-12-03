@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_11_27_181036) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_02_181204) do
+  create_table "blocks", force: :cascade do |t|
+    t.integer "blocker_id", null: false
+    t.integer "blocked_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["blocked_id"], name: "index_blocks_on_blocked_id"
+    t.index ["blocker_id"], name: "index_blocks_on_blocker_id"
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.integer "user_id", null: false
     t.text "bio"
@@ -32,5 +41,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_27_181036) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "blocks", "blockeds"
+  add_foreign_key "blocks", "blockers"
   add_foreign_key "profiles", "users"
 end

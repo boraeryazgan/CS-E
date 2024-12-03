@@ -1,22 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">MyApp</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Giriş Yap</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/signup">Kayıt Ol</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 <h1>Kayıt Ol</h1>
-<%= form_with model: @user, url: signup_path, local: true do |f| %>
-  <div>
-    <%= f.label :username, "Kullanıcı Adı" %>
-    <%= f.text_field :username %>
+<%= form_with model: @user, url: signup_path, local: true, class: "needs-validation", novalidate: true do |f| %>
+  <div class="mb-3">
+    <%= f.label :username, "Kullanıcı Adı", class: "form-label" %>
+    <%= f.text_field :username, class: "form-control", required: true %>
   </div>
-  <div>
-    <%= f.label :email, "E-posta" %>
-    <%= f.email_field :email %>
+
+  <div class="mb-3">
+    <%= f.label :email, "E-posta", class: "form-label" %>
+    <%= f.email_field :email, class: "form-control", required: true %>
   </div>
-  <div>
-    <%= f.label :password, "Şifre" %>
-    <%= f.password_field :password %>
+
+  <div class="mb-3">
+    <%= f.label :password, "Şifre", class: "form-label" %>
+    <%= f.password_field :password, class: "form-control", required: true %>
   </div>
-  <div>
-    <%= f.label :password_confirmation, "Şifre (Tekrar)" %>
-    <%= f.password_field :password_confirmation %>
+
+  <div class="mb-3">
+    <%= f.label :password_confirmation, "Şifre (Tekrar)", class: "form-label" %>
+    <%= f.password_field :password_confirmation, class: "form-control", required: true %>
   </div>
-  <div>
-    <%= f.submit "Kayıt Ol" %>
+
+  <div class="mb-3">
+    <%= f.submit "Kayıt Ol", class: "btn btn-primary" %>
   </div>
 <% end %>
