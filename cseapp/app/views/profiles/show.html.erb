@@ -1,0 +1,13 @@
+<div class="profile-container">
+  <div class="profile-header">
+    <img src="<%= avatar_url_for(@user) %>" alt="Avatar" class="profile-avatar">
+    <h1 class="profile-name"><%= @user.email %></h1>
+  </div>
+
+  <div class="profile-details">
+    <p><strong>Email:</strong> <%= @user.email %></p>
+    <p><strong>Oluşturulma Tarihi:</strong> <%= @user.created_at.strftime('%d %B %Y') %></p>
+  </div>
+
+  <%= link_to 'Profili Düzenle', edit_profile_path, class: 'btn btn-primary' %>
+</div>

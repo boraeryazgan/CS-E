@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
   root 'pages#home'
   devise_for :users
+  resource :profile, only: [:show, :edit, :update], controller: 'profiles'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   devise_scope :user do
     get 'users', to: 'devise/sessions#new'
