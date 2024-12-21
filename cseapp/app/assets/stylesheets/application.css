@@ -238,3 +238,133 @@ body {
     padding: 8px 15px;
   }
 }
+#chatroom_container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Yan Panel Ayarları */
+  #side_panel {
+    background-color: #34495e;
+    border-radius: 8px;
+    padding: 15px;
+    margin-right: 10px;
+  }
+  
+  #side_panel h4 {
+    border-bottom: 2px solid #1abc9c;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+  }
+  
+  #users, #rooms {
+    background-color: #3b4b5a;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  
+  #users div, #rooms div {
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  #users div:hover, #rooms div:hover {
+    background-color: #1abc9c;
+    color: #fff;
+  }
+  
+  /* Oda ve Mesaj Konteyneri */
+  #room_container {
+    flex: 1;
+    background-color: #3b4b5a;
+    border-radius: 8px;
+    padding: 15px;
+  }
+  
+  #single_room h4 {
+    font-size: 24px;
+    color: #1abc9c;
+    margin-bottom: 15px;
+  }
+  
+  #messages {
+    background-color: #34495e;
+    border-radius: 5px;
+    padding: 10px;
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+  }
+  
+  #messages .message-box {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #1c2833;
+  }
+  
+  #messages .message-box .name {
+    font-weight: bold;
+    color: #1abc9c;
+    margin-bottom: 5px;
+  }
+  
+  #messages .message-box:hover {
+    background-color: #1abc9c;
+    color: #fff;
+  }
+  
+  /* Mesaj Gönderme Formu */
+  #new_message_form {
+    background-color: #2c3e50;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  
+  #new_message_form input {
+    flex: 1;
+    border: 1px solid #1abc9c;
+    border-radius: 5px;
+    padding: 10px;
+    margin-right: 10px;
+    background-color: #34495e;
+    color: #ecf0f1;
+  }
+  
+  #new_message_form button {
+    background-color: #1abc9c;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  #new_message_form button:hover {
+    background-color: #16a085;
+  }
+  
+  /* Link Butonları */
+  a {
+    text-decoration: none;
+    color: #1abc9c;
+    transition: color 0.3s ease;
+  }
+  
+  a:hover {
+    color: #16a085;
+  }
