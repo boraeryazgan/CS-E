@@ -13,61 +13,94 @@
  *= require_tree .
  *= require_self
  */
- .avatar {
-  border-radius: 50%;
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-}
+ /* Genel Kapsayıcı */
+.edit-profile-container,
 .profile-container {
-  max-width: 600px;
+  max-width: 800px;
   margin: 50px auto;
-  background-color: #f9f9f9;
+  background-color: #ffffff;
   border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow-y: auto; /* Kaydırmayı etkinleştir */
+  max-height: 90vh; /* Sayfanın dikey alanını aşmasın */
 }
 
-.profile-header {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
+/* Profil Avatar */
 .profile-avatar {
   width: 150px;
   height: 150px;
   border-radius: 50%;
   border: 3px solid #4caf50;
-  margin-bottom: 15px;
+  margin: 0 auto 15px;
+  display: block;
+}
+
+/* Profil Başlık */
+.profile-header {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .profile-name {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: bold;
   color: #333;
 }
 
-.profile-details {
+.profile-email,
+.profile-interests,
+.profile-about {
   font-size: 16px;
   color: #555;
 }
 
-.profile-details p {
-  margin: 10px 0;
+/* Sosyal Medya Linkleri */
+.social-links {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.social-links li {
+  margin: 5px 0;
+}
+
+.social-links a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.social-links a:hover {
+  text-decoration: underline;
+}
+
+/* Butonlar */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin: 10px 5px 0;
 }
 
 .btn-primary {
-  display: inline-block;
-  background-color: #4caf50;
+  background-color: #007bff;
   color: white;
-  padding: 10px 20px;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s;
 }
 
 .btn-primary:hover {
-  background-color: #45a049;
+  background-color: #0056b3;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
 }
 body {
   overflow: hidden;
@@ -120,4 +153,88 @@ body {
   margin-bottom: 10px;
   background-color: #555555;
   padding: 10px;
+}
+
+
+/* Ana Sayfa Genel Kapsayıcı */
+.home-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  text-align: center;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+.home-header h1 {
+  font-size: 48px;
+  font-weight: bold;
+  color: #4caf50;
+  margin-bottom: 10px;
+}
+
+.home-header p {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+/* Eylem Butonları */
+.home-actions p {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.btn {
+  display: inline-block;
+  margin: 10px 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Birincil Buton */
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* İkincil Buton */
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+/* Mobil Uyumluluk */
+@media (max-width: 768px) {
+  .home-container {
+    padding: 15px;
+  }
+
+  .home-header h1 {
+    font-size: 36px;
+  }
+
+  .home-header p {
+    font-size: 16px;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 8px 15px;
+  }
 }

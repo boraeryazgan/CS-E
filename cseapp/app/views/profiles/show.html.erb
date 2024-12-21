@@ -1,13 +1,35 @@
+
 <div class="profile-container">
   <div class="profile-header">
     <img src="<%= avatar_url_for(@user) %>" alt="Avatar" class="profile-avatar">
-    <h1 class="profile-name"><%= @user.email %></h1>
-  </div>
+    <h1 class="profile-name"><%= "#{@user.first_name} #{@user.last_name}" %></h1>
+    <p class="profile-email"><%= @user.email %></p>
+    <p class="profile-interests"><strong>Bölümü:</strong> <%= @user.interests %></p>
+    <p class="profile-about"><strong>Hakkında:</strong> <%= @user.about %></p>
 
-  <div class="profile-details">
-    <p><strong>Email:</strong> <%= @user.email %></p>
-    <p><strong>Oluşturulma Tarihi:</strong> <%= @user.created_at.strftime('%d %B %Y') %></p>
-  </div>
+    <p><strong>Yaş:</strong> <%= @user.age %></p>
+    <p><strong>Cinsiyet:</strong> 
+      <%= case @user.gender
+         when 'male' then 'Erkek'
+         when 'female' then 'Kadın'
+         else 'Diğer'
+         end %>
+    </p>
+    <ul class="social-links">
+      <% if @user.twitter.present? %>
+        <li><a href="<%= @user.twitter %>" target="_blank">Twitter Adresin</a></li>
+      <% end %>
+      <% if @user.linkedin.present? %>
+        <li><a href="<%= @user.linkedin %>" target="_blank">LinkedIn Adresin</a></li>
+      <% end %>
+    </ul>
 
   <%= link_to 'Profili Düzenle', edit_profile_path, class: 'btn btn-primary' %>
+  <%= link_to 'Ana Sayfa', root_path, class: 'btn btn-secondary' %> <br>
+  <%= link_to "Konuşmaya Hemen Başla!", rooms_path %>
+  <%= button_to "Çıkış Yap", destroy_user_session_path, method: :delete %>
+
+  </div>
+
 </div>
+
