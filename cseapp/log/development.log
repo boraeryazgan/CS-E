@@ -14558,3 +14558,42 @@ Turbo::StreamsChannel stopped streaming from Z2lkOi8vYWN1bWJsZS9Sb29tLzE4
 Finished "/cable/" [WebSocket] for 127.0.0.1 at 2024-12-25 14:04:47 +0300
 Turbo::StreamsChannel stopped streaming from users
 Turbo::StreamsChannel stopped streaming from rooms
+Started GET "/" for 127.0.0.1 at 2024-12-27 20:52:38 +0300
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:8
+  Rendered pages/home.html.erb within layouts/application (Duration: 22.2ms | Allocations: 19316)
+  Rendered layouts/_navbar.html.erb (Duration: 0.5ms | Allocations: 630)
+  Rendered layout layouts/application.html.erb (Duration: 61.8ms | Allocations: 58569)
+Completed 200 OK in 75ms (Views: 65.3ms | ActiveRecord: 0.4ms | Allocations: 64317)
+
+
+Started GET "/rooms" for 127.0.0.1 at 2024-12-27 20:52:46 +0300
+Processing by RoomsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" != ?[0m  [["id", 9]]
+  ↳ app/views/rooms/index.html.erb:7
+  Rendered collection of users/_user.html.erb [3 times] (Duration: 0.5ms | Allocations: 422)
+  Rendered layouts/_new_room_form.html.erb (Duration: 4.5ms | Allocations: 3328)
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."is_private" = ?[0m  [["is_private", 0]]
+  ↳ app/views/rooms/index.html.erb:13
+  Rendered collection of rooms/_room.html.erb [3 times] (Duration: 0.4ms | Allocations: 330)
+  Rendered rooms/index.html.erb within layouts/application (Duration: 9.6ms | Allocations: 7211)
+  Rendered layouts/_navbar.html.erb (Duration: 0.1ms | Allocations: 165)
+  Rendered layout layouts/application.html.erb (Duration: 11.4ms | Allocations: 9458)
+Completed 200 OK in 23ms (Views: 12.4ms | ActiveRecord: 0.6ms | Allocations: 20749)
+
+
+Started GET "/cable" for 127.0.0.1 at 2024-12-27 20:52:46 +0300
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2024-12-27 20:52:46 +0300
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Turbo::StreamsChannel is transmitting the subscription confirmation
+Turbo::StreamsChannel is transmitting the subscription confirmation
+Turbo::StreamsChannel is streaming from users
+Turbo::StreamsChannel is streaming from rooms
