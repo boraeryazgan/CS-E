@@ -10,38 +10,56 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_02_181204) do
-  create_table "blocks", force: :cascade do |t|
-    t.integer "blocker_id", null: false
-    t.integer "blocked_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["blocked_id"], name: "index_blocks_on_blocked_id"
-    t.index ["blocker_id"], name: "index_blocks_on_blocker_id"
+ActiveRecord::Schema.define(version: 2024_12_21_181011) do
+
+  create_table "messages", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "room_id", null: false
+    t.text "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_messages_on_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
-  create_table "profiles", force: :cascade do |t|
+  create_table "participants", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.text "bio"
-    t.string "location"
-    t.integer "age"
-    t.string "gender"
-    t.text "interests"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_profiles_on_user_id"
+    t.integer "room_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_participants_on_room_id"
+    t.index ["user_id"], name: "index_participants_on_user_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string "name"
+    t.boolean "is_private", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username", null: false
-    t.string "email", null: false
-    t.string "password_digest", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at", precision: 6
+    t.datetime "remember_created_at", precision: 6
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "age"
+    t.string "gender"
+    t.string "interests"
+    t.text "about"
+    t.string "twitter"
+    t.string "linkedin"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "blocks", "blockeds"
-  add_foreign_key "blocks", "blockers"
-  add_foreign_key "profiles", "users"
+  add_foreign_key "messages", "rooms"
+  add_foreign_key "messages", "users"
+  add_foreign_key "participants", "rooms"
+  add_foreign_key "participants", "users"
 end

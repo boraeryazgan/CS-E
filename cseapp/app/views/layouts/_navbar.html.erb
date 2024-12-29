@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <!-- Uygulama Adı -->
+    <a class="navbar-brand" href="<%= root_path %>">CS(E)</a>
+
+    <!-- Navbar Toggler (Mobil İçin) -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar İçeriği -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <% if user_signed_in? %>
+          <!-- Kullanıcı Giriş Yapmış -->
+          <li class="nav-item">
+            <a class="nav-link" href="<%= profile_path %>">Profil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<%= rooms_path %>">Mesajlar</a>
+          </li>
+          <li class="nav-item">
+            <%= button_to "Çıkış Yap", destroy_user_session_path, method: :delete, class: "nav-link btn btn-link text-decoration-none" %>
+          </li>
+        <% else %>
+          <!-- Kullanıcı Giriş Yapmamış -->
+          <li class="nav-item">
+            <a class="nav-link" href="<%= new_user_session_path %>">Giriş Yap</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<%= new_user_registration_path %>">Kayıt Ol</a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

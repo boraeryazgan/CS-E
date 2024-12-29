@@ -1,0 +1,19 @@
+<div class="home-container">
+  <header class="home-header">
+    <h1>CS(E)</h1>
+    <p class="home-tagline">Acıbadem Üniversitesi için Sosyal Medya Uygulaması</p>
+  </header>
+
+  <div class="home-actions">
+    <% if current_user %>
+      <p>Hoş geldiniz, <strong><%= current_user.first_name %></strong>!</p>
+      <%= link_to "Mesajlaşmaya Başla", rooms_path, class: "btn btn-primary" %>
+      <%= link_to "Profil Sayfasına Git", profile_path, class: "btn btn-info" %>
+      <%= button_to "Çıkış Yap", destroy_user_session_path, method: :delete, class: "btn btn-secondary" %>
+    <% else %>
+      <p>Hesabınıza giriş yapın ya da kaydolun ve eğlenceli bir sosyal medya deneyimine katılın!</p>
+      <%= link_to "Giriş Yap", new_user_session_path, class: "btn btn-primary" %>
+      <%= link_to "Kayıt Ol", new_user_registration_path, class: "btn btn-secondary" %>
+    <% end %>
+  </div>
+</div>
