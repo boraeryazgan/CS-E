@@ -14169,3 +14169,173 @@ Turbo::StreamsChannel is transmitting the subscription confirmation
 Turbo::StreamsChannel is streaming from users
 Turbo::StreamsChannel is transmitting the subscription confirmation
 Turbo::StreamsChannel is streaming from rooms
+Started GET "/users/sign_up" for 127.0.0.1 at 2024-12-30 18:10:04 +0300
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /Users/fp10/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-4.8.1/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /Users/fp10/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-4.8.1/app/views/devise/shared/_error_messages.html.erb (Duration: 0.4ms | Allocations: 396)
+  Rendered /Users/fp10/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 0.6ms | Allocations: 1082)
+  Rendered /Users/fp10/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-4.8.1/app/views/devise/registrations/new.html.erb within layouts/application (Duration: 14.7ms | Allocations: 10155)
+  Rendered layouts/_navbar.html.erb (Duration: 0.6ms | Allocations: 561)
+  Rendered layout layouts/application.html.erb (Duration: 153.2ms | Allocations: 103077)
+Completed 200 OK in 173ms (Views: 159.4ms | ActiveRecord: 0.3ms | Allocations: 126207)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2024-12-30 18:10:11 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /Users/fp10/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-4.8.1/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /Users/fp10/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-4.8.1/app/views/devise/shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered /Users/fp10/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 72)
+  Rendered /Users/fp10/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-4.8.1/app/views/devise/registrations/new.html.erb within layouts/application (Duration: 2.5ms | Allocations: 942)
+  Rendered layouts/_navbar.html.erb (Duration: 0.2ms | Allocations: 62)
+  Rendered layout layouts/application.html.erb (Duration: 7.8ms | Allocations: 3057)
+Completed 200 OK in 11ms (Views: 8.8ms | ActiveRecord: 0.0ms | Allocations: 3637)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-12-30 18:10:12 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /Users/fp10/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/fp10/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 0.5ms | Allocations: 496)
+  Rendered /Users/fp10/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 6.1ms | Allocations: 2660)
+  Rendered layouts/_navbar.html.erb (Duration: 0.1ms | Allocations: 80)
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | Allocations: 4862)
+Completed 200 OK in 17ms (Views: 11.0ms | ActiveRecord: 0.0ms | Allocations: 6959)
+
+
+Started GET "/" for 127.0.0.1 at 2024-12-30 18:10:13 +0300
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 3.1ms | Allocations: 812)
+  Rendered layouts/_navbar.html.erb (Duration: 0.1ms | Allocations: 70)
+  Rendered layout layouts/application.html.erb (Duration: 6.6ms | Allocations: 3026)
+Completed 200 OK in 11ms (Views: 9.7ms | ActiveRecord: 0.0ms | Allocations: 4026)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-12-30 18:44:15 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /Users/fp10/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/fp10/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 1.1ms | Allocations: 915)
+  Rendered /Users/fp10/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 9.3ms | Allocations: 2420)
+  Rendered layouts/_navbar.html.erb (Duration: 0.7ms | Allocations: 523)
+  Rendered layout layouts/application.html.erb (Duration: 16.2ms | Allocations: 5610)
+Completed 200 OK in 40ms (Views: 24.3ms | Allocations: 7235)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-12-30 18:44:17 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /Users/fp10/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/fp10/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 116)
+  Rendered /Users/fp10/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 1.5ms | Allocations: 918)
+  Rendered layouts/_navbar.html.erb (Duration: 0.1ms | Allocations: 62)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | Allocations: 3058)
+Completed 200 OK in 43ms (Views: 4.6ms | Allocations: 3684)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2024-12-30 18:44:18 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /Users/fp10/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-4.8.1/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /Users/fp10/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-4.8.1/app/views/devise/shared/_error_messages.html.erb (Duration: 1.2ms | Allocations: 373)
+  Rendered /Users/fp10/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 82)
+  Rendered /Users/fp10/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-4.8.1/app/views/devise/registrations/new.html.erb within layouts/application (Duration: 7.5ms | Allocations: 2079)
+  Rendered layouts/_navbar.html.erb (Duration: 0.2ms | Allocations: 77)
+  Rendered layout layouts/application.html.erb (Duration: 13.1ms | Allocations: 4287)
+Completed 200 OK in 17ms (Views: 15.2ms | Allocations: 5477)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-12-30 18:44:21 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /Users/fp10/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/fp10/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 0.5ms | Allocations: 116)
+  Rendered /Users/fp10/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 2.4ms | Allocations: 918)
+  Rendered layouts/_navbar.html.erb (Duration: 0.2ms | Allocations: 62)
+  Rendered layout layouts/application.html.erb (Duration: 6.8ms | Allocations: 3039)
+Completed 200 OK in 10ms (Views: 7.5ms | Allocations: 3648)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2024-12-30 20:53:24 +0300
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"furkanpehlivanoglu@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "furkanpehlivanoglu@gmail.com"], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 687ms (ActiveRecord: 2.8ms | Allocations: 9172)
+
+
+Started GET "/" for 127.0.0.1 at 2024-12-30 20:53:24 +0300
+Processing by PagesController#home as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:8
+  Rendered pages/home.html.erb within layouts/application (Duration: 4.0ms | Allocations: 1753)
+  Rendered layouts/_navbar.html.erb (Duration: 0.8ms | Allocations: 161)
+  Rendered layout layouts/application.html.erb (Duration: 10.1ms | Allocations: 4048)
+Completed 200 OK in 12ms (Views: 11.3ms | ActiveRecord: 0.1ms | Allocations: 4969)
+
+
+Started GET "/profile" for 127.0.0.1 at 2024-12-30 20:53:28 +0300
+Processing by ProfilesController#show as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering profiles/show.html.erb within layouts/application
+  Rendered profiles/show.html.erb within layouts/application (Duration: 1.8ms | Allocations: 1071)
+  Rendered layouts/_navbar.html.erb (Duration: 0.3ms | Allocations: 160)
+  Rendered layout layouts/application.html.erb (Duration: 7.2ms | Allocations: 3354)
+Completed 200 OK in 11ms (Views: 8.4ms | ActiveRecord: 0.1ms | Allocations: 5700)
+
+
+Started GET "/rooms" for 127.0.0.1 at 2024-12-30 20:53:43 +0300
+Processing by RoomsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" != ?[0m  [["id", 8]]
+  ↳ app/views/rooms/index.html.erb:7
+  Rendered collection of users/_user.html.erb [3 times] (Duration: 1.0ms | Allocations: 416)
+  Rendered layouts/_new_room_form.html.erb (Duration: 0.9ms | Allocations: 768)
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."is_private" = ?[0m  [["is_private", 0]]
+  ↳ app/views/rooms/index.html.erb:13
+  Rendered collection of rooms/_room.html.erb [3 times] (Duration: 0.6ms | Allocations: 330)
+  Rendered rooms/index.html.erb within layouts/application (Duration: 13.7ms | Allocations: 4961)
+  Rendered layouts/_navbar.html.erb (Duration: 0.2ms | Allocations: 165)
+  Rendered layout layouts/application.html.erb (Duration: 16.5ms | Allocations: 7227)
+Completed 200 OK in 34ms (Views: 17.5ms | ActiveRecord: 1.3ms | Allocations: 15458)
+
+
+Started GET "/cable" for 127.0.0.1 at 2024-12-30 20:53:43 +0300
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2024-12-30 20:53:43 +0300
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/" for 127.0.0.1 at 2024-12-30 20:54:05 +0300
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:8
+  Rendered pages/home.html.erb within layouts/application (Duration: 11.0ms | Allocations: 19274)
+  Rendered layouts/_navbar.html.erb (Duration: 0.7ms | Allocations: 630)
+  Rendered layout layouts/application.html.erb (Duration: 54.7ms | Allocations: 58075)
+Completed 200 OK in 61ms (Views: 56.6ms | ActiveRecord: 0.3ms | Allocations: 63819)
+
+
+Started GET "/profile" for 127.0.0.1 at 2024-12-30 20:54:08 +0300
+Processing by ProfilesController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering profiles/show.html.erb within layouts/application
+  Rendered profiles/show.html.erb within layouts/application (Duration: 1.5ms | Allocations: 1068)
+  Rendered layouts/_navbar.html.erb (Duration: 0.3ms | Allocations: 160)
+  Rendered layout layouts/application.html.erb (Duration: 5.9ms | Allocations: 3319)
+Completed 200 OK in 20ms (Views: 8.0ms | ActiveRecord: 0.2ms | Allocations: 8598)
+
+
