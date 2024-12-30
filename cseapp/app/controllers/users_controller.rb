@@ -19,4 +19,13 @@ class UsersController < ApplicationController
     user = [user1, user2].sort
     "private_#{user[0].id}_#{user[1].id}"
   end
+
+  def add_friend
+    @user = User.find(params[:id])
+    if current_user.add_friend(@user) # add_friend metodunu kullanıyoruz
+      redirect_to root_path, notice: "Arkadaşlık isteği gönderildi!"
+    else
+      redirect_to root_path, alert: "Arkadaş eklenirken bir sorun oluştu."
+    end
+  end
 end

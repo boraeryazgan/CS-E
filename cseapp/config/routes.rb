@@ -13,5 +13,9 @@ Rails.application.routes.draw do
   get 'user/:id', to: 'users#show', as: 'user'
   # Defines the root path route ("/")
   # root "articles#index"
-
+  resources :users, only: [:show] do
+    member do
+      post :add_friend
+    end
+  end
 end
