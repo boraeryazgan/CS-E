@@ -30,16 +30,16 @@ jobs:
           bundler-cache: true
 
       - name: Install dependencies
-        working-directory: CS-E/cseapp
+        working-directory: cseapp
         run: |
           bundle install
 
       - name: Set up database
-        working-directory: CS-E/cseapp
+        working-directory: cseapp
         run: |
           bin/rails db:setup RAILS_ENV=test
           
       - name: Run Tests
-        working-directory: CS-E/cseapp
+        working-directory: cseapp
         run: |
           bin/rails test
