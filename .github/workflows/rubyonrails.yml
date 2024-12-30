@@ -1,9 +1,3 @@
-# This workflow uses actions that are not certified by GitHub.  They are
-# provided by a third-party and are governed by separate terms of service,
-# privacy policy, and support documentation.
-#
-# This workflow will install a prebuilt Ruby version, install dependencies, and
-# run tests and linters.
 name: "Ruby on Rails CI"
 on:
   push:
@@ -29,15 +23,16 @@ jobs:
           bundler-cache: true
 
       - name: Install dependencies
+        working-directory: CS-E/cseapp
         run: |
           bundle install
 
       - name: Set up database
+        working-directory: CS-E/cseapp
         run: |
           bin/rails db:setup RAILS_ENV=test
           
       - name: Run Tests
+        working-directory: CS-E/cseapp
         run: |
           bin/rails test
-
-  
