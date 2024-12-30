@@ -1,4 +1,4 @@
-class BlocksController < ApplicationController
+class BlockController < ApplicationController
     before_action :authenticate_user!
   
     def create
