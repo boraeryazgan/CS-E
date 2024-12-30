@@ -15203,3 +15203,14 @@ Processing by ProfilesController#show as HTML
 Completed 200 OK in 11ms (Views: 7.3ms | ActiveRecord: 0.2ms | Allocations: 4006)
 
 
+Started GET "/profile" for 127.0.0.1 at 2024-12-30 23:12:33 +0300
+Processing by ProfilesController#show as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering profiles/show.html.erb within layouts/application
+  Rendered profiles/show.html.erb within layouts/application (Duration: 0.9ms | Allocations: 226)
+  Rendered layouts/_navbar.html.erb (Duration: 38.6ms | Allocations: 153)
+  Rendered layout layouts/application.html.erb (Duration: 43.6ms | Allocations: 2390)
+Completed 200 OK in 50ms (Views: 44.2ms | ActiveRecord: 0.3ms | Allocations: 3981)
+
+
