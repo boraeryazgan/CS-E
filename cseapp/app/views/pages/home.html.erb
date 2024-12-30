@@ -19,7 +19,7 @@
 </div>
 <% if current_user %>
     <div class="class="home-container">
-      <h2>Diğer Kullanıcılar</h2>
+      <h2>Other Users</h2>
       <% @users.each do |user| %>
         <% unless user == current_user %>
           <div class="user-card">
