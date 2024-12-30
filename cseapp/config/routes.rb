@@ -14,12 +14,4 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  resources :friendships, only: [:create, :update, :destroy]
-
-  # Kullanıcılarla ilgili işlemler
-  resources :users, only: [:index, :show]
-
-  # Ana sayfa
-  root "users#index"
-end
 end
