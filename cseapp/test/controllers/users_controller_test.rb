@@ -1,49 +1,38 @@
-require 'rails_helper'
+require 'test_helper'
 
-RSpec.describe UsersController, type: :controller do
-  # Eğer Factory Bot kullanıyorsanız, kullanıcıları ve odaları burada tanımlıyoruz
-  let!(:user1) { create(:user) }
-  let!(:user2) { create(:user) }
-  let!(:room) { create(:room, name: "private_#{user1.id}_#{user2.id}") }
-
-  # Testler başlamadan önce yapılacak işlemler
-  before do
-    sign_in user1 # Eğer Devise kullanıyorsanız
-    allow(Room).to receive(:public_rooms).and_return([room])
+class UsersControllerTest < ActionDispatch::IntegrationTest
+  # Kullanıcıları ve odaları burada tanımlıyoruz
+  def setup
+    @user1 = users(:user1) # test/fixtures/users.yml dosyasındaki user1 kaydını kullanabilirsiniz
+    @user2 = users(:user2) # test/fixtures/users.yml dosyasındaki user2 kaydını kullanabilirsiniz
+    @room = rooms(:room) # test/fixtures/rooms.yml dosyasındaki room kaydını kullanabilirsiniz
+    sign_in @user1 # Eğer Devise kullanıyorsanız
   end
 
-  describe 'GET #show' do
-    before do
-      get :show, params: { id: user2.id }
-    end
+  # GET #show
+  test "should get show and assign the correct variables" do
+    get user_path(@user2) # users/:id path'e GET isteği gönderiyoruz
 
-    it 'assigns the requested user to @user' do
-      expect(assigns(:user)).to eq(user2)
-    end
+    # @user değişkenini doğru şekilde atadık mı?
+    assert_equal assigns(:user), @user2
 
-    it 'assigns all users except current_user to @users' do
-      expect(assigns(:users)).to include(user2)
-      expect(assigns(:users)).not_to include(user1)
-    end
+    # @users değişkenine doğru kullanıcıları dahil ettik mi?
+    assert_includes assigns(:users), @user2
+    assert_not_includes assigns(:users), @user1
 
-    it 'assigns a new Room to @room' do
-      expect(assigns(:room)).to be_a_new(Room)
-    end
+    # Yeni bir Room atandı mı?
+    assert assigns(:room).is_a?(Room)
 
-    it 'assigns the correct room name to @room_name' do
-      expect(assigns(:room_name)).to eq("private_#{user1.id}_#{user2.id}")
-    end
+    # @room_name doğru şekilde atandı mı?
+    assert_equal assigns(:room_name), "private_#{@user1.id}_#{@user2.id}"
 
-    it 'assigns the private room to @single_room' do
-      expect(assigns(:single_room).name).to eq("private_#{user1.id}_#{user2.id}")
-    end
+    # @single_room doğru şekilde atandı mı?
+    assert_equal assigns(:single_room).name, "private_#{@user1.id}_#{@user2.id}"
 
-    it 'assigns a new Message to @message' do
-      expect(assigns(:message)).to be_a_new(Message)
-    end
+    # Yeni bir Message atandı mı?
+    assert assigns(:message).is_a?(Message)
 
-    it 'renders the rooms/index template' do
-      expect(response).to render_template('rooms/index')
-    end
+    # rooms/index şablonu doğru şekilde render edildi mi?
+    assert_template :index
   end
 end
