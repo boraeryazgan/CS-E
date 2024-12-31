@@ -17,7 +17,8 @@ Rails.application.routes.draw do
   # Users routes
   resources :users do
     member do
-      get :add_friend  # `GET` isteğiyle `add_friend` action'ını tetiklemek için
+      get :add_friend
+      get :remove_friend
     end
   end
 end

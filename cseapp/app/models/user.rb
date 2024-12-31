@@ -22,10 +22,16 @@ class User < ApplicationRecord
     self.blocked_users ||= []
 
     # Aynı kişi, zaten arkadaş ya da engellenmişse ekleme
-    return false if self == friend || self.friends.include?(friend.first_name.to_s) || self.blocked_users.include?(friend.id.to_s)
+    return false if self == friend || self.friends.include?(friend.id.to_s) || self.blocked_users.include?(friend.id.to_s)
 
     # Arkadaşı listeye ekle
     self.friends << friend.id.to_s
+    save
+  end
+
+  def remove_friend(friend)
+    self.friends = self.friends.gsub(friend.id.to_s, "").strip
+
     save
   end
 
@@ -35,11 +41,6 @@ class User < ApplicationRecord
     save
   end
 
-  # Arkadaş silme
-  def remove_friend(user)
-    self.friends.delete(user.id)
-    save
-  end
 
   # Engellenen kullanıcıyı kaldırma
   def unblock_user(user)

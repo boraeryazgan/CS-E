@@ -13,6 +13,21 @@ class UsersController < ApplicationController
       redirect_to user_path(user), alert: 'Failed to add friend.'
     end
   end
+
+  def remove_friend
+    user = User.find_by(id: params[:id]) 
+    
+    if user.nil?
+      redirect_to users_path, alert: "User not found."
+      return
+    end
+
+    if current_user.remove_friend(user) 
+      redirect_to root_path, notice: 'Friend removed successfully!'
+    else
+      redirect_to user_path(user), alert: 'Failed to remove friend.'
+    end
+  end
   def show
     @user = User.find(params[:id])
     @users = User.all_except(current_user)
