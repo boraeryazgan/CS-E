@@ -10,6 +10,7 @@ on:
       - continious_integration
       - BoraEryazgan-(FY)
       - origin/master
+      - master-dev
 
 jobs:
   test:
