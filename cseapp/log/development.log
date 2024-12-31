@@ -15214,3 +15214,75 @@ Processing by ProfilesController#show as HTML
 Completed 200 OK in 50ms (Views: 44.2ms | ActiveRecord: 0.3ms | Allocations: 3981)
 
 
+Started GET "/" for 127.0.0.1 at 2024-12-31 05:51:07 +0300
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 6.0ms | Allocations: 1442)
+  Rendered layouts/_navbar.html.erb (Duration: 0.6ms | Allocations: 544)
+  Rendered layout layouts/application.html.erb (Duration: 508.8ms | Allocations: 94665)
+Completed 200 OK in 521ms (Views: 512.2ms | ActiveRecord: 0.0ms | Allocations: 102008)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-12-31 05:51:11 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /Users/ardaozdemir/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/ardaozdemir/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-4.8.1/app/views/devise/shared/_links.html.erb (Duration: 0.9ms | Allocations: 1299)
+  Rendered /Users/ardaozdemir/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-4.8.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 17.3ms | Allocations: 9737)
+  Rendered layouts/_navbar.html.erb (Duration: 0.1ms | Allocations: 80)
+  Rendered layout layouts/application.html.erb (Duration: 19.2ms | Allocations: 11941)
+Completed 200 OK in 33ms (Views: 20.9ms | ActiveRecord: 0.4ms | Allocations: 29230)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2024-12-31 05:51:14 +0300
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"ardaozdemir@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "ardaozdemir@gmail.com"], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 440ms (ActiveRecord: 0.4ms | Allocations: 8134)
+
+
+Started GET "/" for 127.0.0.1 at 2024-12-31 05:51:15 +0300
+Processing by PagesController#home as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:8
+  Rendered pages/home.html.erb within layouts/application (Duration: 1.4ms | Allocations: 1236)
+  Rendered layouts/_navbar.html.erb (Duration: 0.1ms | Allocations: 154)
+  Rendered layout layouts/application.html.erb (Duration: 2.7ms | Allocations: 3452)
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.1ms | Allocations: 3763)
+
+
+Started GET "/rooms" for 127.0.0.1 at 2024-12-31 05:51:25 +0300
+Processing by RoomsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" != ?[0m  [["id", 9]]
+  ↳ app/views/rooms/index.html.erb:7
+  Rendered collection of users/_user.html.erb [3 times] (Duration: 0.5ms | Allocations: 416)
+  Rendered layouts/_new_room_form.html.erb (Duration: 0.9ms | Allocations: 768)
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."is_private" = ?[0m  [["is_private", 0]]
+  ↳ app/views/rooms/index.html.erb:13
+  Rendered collection of rooms/_room.html.erb [3 times] (Duration: 0.4ms | Allocations: 330)
+  Rendered rooms/index.html.erb within layouts/application (Duration: 7.5ms | Allocations: 4984)
+  Rendered layouts/_navbar.html.erb (Duration: 0.1ms | Allocations: 165)
+  Rendered layout layouts/application.html.erb (Duration: 9.5ms | Allocations: 7233)
+Completed 200 OK in 19ms (Views: 10.4ms | ActiveRecord: 0.8ms | Allocations: 15474)
+
+
+Started GET "/cable" for 127.0.0.1 at 2024-12-31 05:51:25 +0300
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2024-12-31 05:51:25 +0300
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Turbo::StreamsChannel is transmitting the subscription confirmation
+Turbo::StreamsChannel is transmitting the subscription confirmation
+Turbo::StreamsChannel is streaming from users
+Turbo::StreamsChannel is streaming from rooms
+Unsubscribing from channel: {"channel":"Turbo::StreamsChannel","signed_stream_name":"InVzZXJzIg==--7332877b1117bf6e3f5aa015f94cf4f88b26525af9b298a4e1fb475f1e69b2a7"}
+Turbo::StreamsChannel stopped streaming from users
+Unsubscribing from channel: {"channel":"Turbo::StreamsChannel","signed_stream_name":"InJvb21zIg==--7837faab1d71d0f1f30ebb442e8bd222579828e1654e16bac6b0bf471947892f"}
+Turbo::StreamsChannel stopped streaming from rooms
