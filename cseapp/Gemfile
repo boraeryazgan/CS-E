@@ -30,7 +30,7 @@ gem "jbuilder"
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.0"
 
-gem 'rspec-rails', group: [:development, :test]
+
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -69,7 +69,9 @@ group :development do
   gem "web-console"
 end
 group :development, :test do
-  gem 'rspec-rails'
+  gem 'minitest-rails'  
+  gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :test do
