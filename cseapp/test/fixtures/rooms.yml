@@ -1,19 +1,20 @@
+# rooms.yml
 room_one:
   name: "Room A"
   is_private: false
-  user: user_one
+  user_id: 1  # user_one'un ID'si
 
 room_two:
   name: "Room B"
   is_private: true
-  user: user_two
+  user_id: 2  
 
 room_three:
   name: "Room C"
   is_private: false
-  user: user_three
+  user_id: 3  
 
 room_four:
   name: "Room D"
   is_private: true
-  user: user_four
+  user_id: 4  
