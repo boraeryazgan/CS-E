@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     end
   
     if current_user.add_friend(user)  # Arkadaşa ekleme işlemi
-      redirect_to user_path(user), notice: 'Friend added successfully!'
+      redirect_to root_path, notice: 'Friend added successfully!'
     else
       redirect_to user_path(user), alert: 'Failed to add friend.'
     end
