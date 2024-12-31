@@ -14,4 +14,4 @@ user_three:
 
 user_four:
   email:furkanyazgan@gmail.com
-  password:digest: <%= BCrypt::Password.create('123456') %>
+  password_digest: <%= BCrypt::Password.create('123456') %>
