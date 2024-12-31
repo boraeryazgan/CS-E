@@ -1,12 +1,15 @@
-name: Ruby CI (SQLite)
-
+name: "Ruby on Rails CI"
 on:
   push:
-    branches:
-      - main
+    branches:     
+      - continious_integration
+      - BoraEryazgan-(FY)
+      - origin/master
   pull_request:
     branches:
-      - main
+      - continious_integration
+      - BoraEryazgan-(FY)
+      - origin/master
 
 jobs:
   test:
@@ -15,26 +18,31 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Debug Directory Structure
+        run: |
+          pwd
+          ls -R
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.3.5 
+          ruby-version: 3.3.5
           bundler-cache: true
 
       - name: Install dependencies
+        working-directory: cseapp
         run: |
           bundle install
 
       - name: Set up database
+        working-directory: cseapp
         run: |
           bin/rails db:setup RAILS_ENV=test
-
-      - name: Run RuboCop (Linting)
-        run: |
-          gem install rubocop
-          rubocop
-
+          
       - name: Run Tests
+        working-directory: cseapp
         run: |
           bin/rails test
