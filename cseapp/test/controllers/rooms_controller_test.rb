@@ -11,7 +11,7 @@ class RoomsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create room" do
+  test "should create a new room" do
     assert_difference('Room.count') do
       post rooms_url, params: { room: { name: 'New Room' } }
     end
