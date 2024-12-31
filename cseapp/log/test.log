@@ -1,0 +1,143 @@
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "messages"[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "messages" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "room_id" integer NOT NULL, "body" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_messages_on_room_id" ON "messages" ("room_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_messages_on_user_id" ON "messages" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "participants"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "participants" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "room_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_participants_on_room_id" ON "participants" ("room_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_participants_on_user_id" ON "participants" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "rooms"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "rooms" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "is_private" boolean DEFAULT 0, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime(6), "remember_created_at" datetime(6), "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "first_name" varchar, "last_name" varchar, "age" integer, "gender" varchar, "interests" varchar, "about" text, "twitter" varchar, "linkedin" varchar)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE TEMPORARY TABLE "amessages" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "room_id" integer NOT NULL, "body" text DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "tindex_amessages_on_user_id" ON "amessages" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "tindex_amessages_on_room_id" ON "amessages" ("room_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "amessages" ("id","user_id","room_id","body","created_at","updated_at")
+                     SELECT "id","user_id","room_id","body","created_at","updated_at" FROM "messages"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "messages"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE TABLE "messages" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "room_id" integer NOT NULL, "body" text DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_a8db0fb63a"
+FOREIGN KEY ("room_id")
+  REFERENCES "rooms" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_messages_on_room_id" ON "messages" ("room_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_messages_on_user_id" ON "messages" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "messages" ("id","user_id","room_id","body","created_at","updated_at")
+                     SELECT "id","user_id","room_id","body","created_at","updated_at" FROM "amessages"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE "amessages"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE TEMPORARY TABLE "amessages" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "room_id" integer NOT NULL, "body" text DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_amessages_on_user_id" ON "amessages" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "tindex_amessages_on_room_id" ON "amessages" ("room_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "amessages" ("id","user_id","room_id","body","created_at","updated_at")
+                     SELECT "id","user_id","room_id","body","created_at","updated_at" FROM "messages"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "messages"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE TABLE "messages" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "room_id" integer NOT NULL, "body" text DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_a8db0fb63a"
+FOREIGN KEY ("room_id")
+  REFERENCES "rooms" ("id")
+, CONSTRAINT "fk_rails_273a25a7a6"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_messages_on_room_id" ON "messages" ("room_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_messages_on_user_id" ON "messages" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "messages" ("id","user_id","room_id","body","created_at","updated_at")
+                     SELECT "id","user_id","room_id","body","created_at","updated_at" FROM "amessages"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE "amessages"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aparticipants" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "room_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "tindex_aparticipants_on_user_id" ON "aparticipants" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "tindex_aparticipants_on_room_id" ON "aparticipants" ("room_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aparticipants" ("id","user_id","room_id","created_at","updated_at")
+                     SELECT "id","user_id","room_id","created_at","updated_at" FROM "participants"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "participants"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE TABLE "participants" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "room_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_08123987c8"
+FOREIGN KEY ("room_id")
+  REFERENCES "rooms" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_participants_on_room_id" ON "participants" ("room_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_participants_on_user_id" ON "participants" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "participants" ("id","user_id","room_id","created_at","updated_at")
+                     SELECT "id","user_id","room_id","created_at","updated_at" FROM "aparticipants"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE "aparticipants"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aparticipants" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "room_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "tindex_aparticipants_on_user_id" ON "aparticipants" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "tindex_aparticipants_on_room_id" ON "aparticipants" ("room_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aparticipants" ("id","user_id","room_id","created_at","updated_at")
+                     SELECT "id","user_id","room_id","created_at","updated_at" FROM "participants"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "participants"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE TABLE "participants" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "room_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_08123987c8"
+FOREIGN KEY ("room_id")
+  REFERENCES "rooms" ("id")
+, CONSTRAINT "fk_rails_b9a3c50f15"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_participants_on_room_id" ON "participants" ("room_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_participants_on_user_id" ON "participants" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "participants" ("id","user_id","room_id","created_at","updated_at")
+                     SELECT "id","user_id","room_id","created_at","updated_at" FROM "aparticipants"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE "aparticipants"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20241221181011)[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20220124080122),
+(20220124080502),
+(20220124083330),
+(20220128080342),
+(20241221175917);
+
+[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2024-12-31 04:41:03.873774"], ["updated_at", "2024-12-31 04:41:03.873774"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "07cb39e6bbf9286660209e0dfdc90e18367956fc"], ["created_at", "2024-12-31 04:41:03.875006"], ["updated_at", "2024-12-31 04:41:03.875006"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m

@@ -1,0 +1,50 @@
+name: "Ruby on Rails CI"
+
+on:
+  push:
+    branches:
+      - continious_integration
+      - BoraEryazgan-(FY)  
+      - master           
+
+  pull_request:
+    branches:
+      - continious_integration
+      - BoraEryazgan-(FY)
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Debug Directory Structure
+        run: |
+          pwd
+          ls -R
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.3.5
+          bundler-cache: true
+
+      - name: Install dependencies
+        working-directory: cseapp 
+        run: |
+          bundle install
+
+      - name: Set up database
+        working-directory: cseapp
+        run: |
+          bin/rails db:setup RAILS_ENV=test  # Test veritabanını oluştur
+
+      - name: Run Tests
+        working-directory: cseapp
+        run: |
+          bin/rails test  # Testleri çalıştır

@@ -1,9 +1,20 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  name: MyString
+room_one:
+  name: "Room A"
   is_private: false
+  user_id: <%= users(:user_one).id %>
 
-two:
-  name: MyString
+room_two:
+  name: "Room B"
+  is_private: true
+  user_id: <%= users(:user_two).id %>
+
+room_three:
+  name: "Room C"
   is_private: false
+  user_id: <%= users(:user_three).id %>
+
+room_four:
+  name: "Room D"
+  is_private: true
+  user_id: <%= users(:user_four).id %>
+
