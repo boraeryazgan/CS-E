@@ -1,20 +1,20 @@
-# rooms.yml
 room_one:
   name: "Room A"
   is_private: false
-  user_id: 1  # user_one'un ID'si
+  user_id: <%= users(:user_one).id %>
 
 room_two:
   name: "Room B"
   is_private: true
-  user_id: 2  
+  user_id: <%= users(:user_two).id %>
 
 room_three:
   name: "Room C"
   is_private: false
-  user_id: 3  
+  user_id: <%= users(:user_three).id %>
 
 room_four:
   name: "Room D"
   is_private: true
-  user_id: 4  
+  user_id: <%= users(:user_four).id %>
+
