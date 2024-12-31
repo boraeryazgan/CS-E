@@ -6,7 +6,7 @@ class RoomsControllerTest < ActionDispatch::IntegrationTest
     sign_in @user # Oturum açıyoruz
   end
 
-  test "should get index" do
+  test "should get rooms index" do
     get rooms_url
     assert_response :success
   end
