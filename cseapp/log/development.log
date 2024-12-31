@@ -15286,3 +15286,4 @@ Unsubscribing from channel: {"channel":"Turbo::StreamsChannel","signed_stream_na
 Turbo::StreamsChannel stopped streaming from users
 Unsubscribing from channel: {"channel":"Turbo::StreamsChannel","signed_stream_name":"InJvb21zIg==--7837faab1d71d0f1f30ebb442e8bd222579828e1654e16bac6b0bf471947892f"}
 Turbo::StreamsChannel stopped streaming from rooms
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2024-12-31 06:18:06 +0300
