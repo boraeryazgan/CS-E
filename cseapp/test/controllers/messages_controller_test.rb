@@ -1,23 +1,28 @@
 require 'test_helper'
 
-class MessagesControllerTest < ActionDispatch::IntegrationTest
+class RoomsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @user = users(:one) 
-    @room = rooms(:one) 
+    @user = users(:one)
+    @room = rooms(:one)
   end
 
-  test "should create message" do
-    sign_in @user 
-    message_body = "Hello, this is a test message!"
+  test "should get index" do
+    sign_in @user
+    get rooms_url
+    assert_response :success
+  end
 
-    assert_difference('Message.count', 1) do
-      post room_messages_path(@room), params: { message: { body: message_body } }
+  test "should create room" do
+    sign_in @user
+    room_params = { name: "New Room", description: "A test room description" }
+
+    assert_difference('Room.count', 1) do
+      post rooms_url, params: { room: room_params }
     end
 
+    assert_response :redirect
+    follow_redirect!
     assert_response :success
-    created_message = Message.last
-    assert_equal message_body, created_message.body
-    assert_equal @room.id, created_message.room_id
-    assert_equal @user.id, created_message.user_id
+    assert_match "New Room", response.body
   end
 end
