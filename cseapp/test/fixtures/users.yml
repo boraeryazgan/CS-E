@@ -2,16 +2,14 @@ user_one:
   email: boraeryazgan@gmail.com
   password_digest: <%= BCrypt::Password.create('123456') %>
 
-
 user_two:
   email: furkanpehlivanoglu@gmail.com
   password_digest: <%= BCrypt::Password.create('123456') %>
-
 
 user_three:
   email: ardaozdemir@gmail.com
   password_digest: <%= BCrypt::Password.create('123456') %>
 
 user_four:
-  email:furkanyazgan@gmail.com
+  email: furkanyazgan@gmail.com
   password_digest: <%= BCrypt::Password.create('123456') %>
