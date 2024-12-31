@@ -1,23 +1,19 @@
-require "test_helper"
-
-class UsersControllerTest < ActionDispatch::IntegrationTest
-  test "should get show" do
-    get users_show_url
-    assert_response :success
-  end
-end
-# spec/controllers/users_controller_spec.rb
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
-  let(:user1) { create(:user) }
-  let(:user2) { create(:user) }
-  let(:room) { create(:room, name: "private_#{user1.id}_#{user2.id}") }
+  # Eğer Factory Bot kullanıyorsanız, kullanıcıları ve odaları burada tanımlıyoruz
+  let!(:user1) { create(:user) }
+  let!(:user2) { create(:user) }
+  let!(:room) { create(:room, name: "private_#{user1.id}_#{user2.id}") }
+
+  # Testler başlamadan önce yapılacak işlemler
+  before do
+    sign_in user1 # Eğer Devise kullanıyorsanız
+    allow(Room).to receive(:public_rooms).and_return([room])
+  end
 
   describe 'GET #show' do
     before do
-      sign_in user1 # Eğer Devise kullanıyorsanız
-      allow(Room).to receive(:public_rooms).and_return([room])
       get :show, params: { id: user2.id }
     end
 
