@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+  <%= javascript_pack_tag 'application' %>  
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <!-- CSS only -->
@@ -23,5 +24,33 @@
   <body>
     <%= render "layouts/navbar" %>
     <%= yield %>
+
   </body>
+      <script>
+      // app/javascript/packs/application.js
+function addFriend(userId) {
+  console.log(10)
+  let csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+  
+  fetch(`/users/${userId}/add_friend`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRF-Token': csrfToken,
+    },
+    body: JSON.stringify({ user_id: userId })
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      alert('Arkadaş eklendi!');
+    } else {
+      alert('Bir hata oluştu.');
+    }
+  })
+  .catch(error => {
+    console.error('Hata:', error);
+  });
+}
+    </script>
 </html>

@@ -17,12 +17,12 @@ class User < ApplicationRecord
 
   # Arkadaş ekleme
   def add_friend(friend_id)
-    friend = User.find(friend_id)
+    friend = User.find(friend_id.id)
     self.friends ||= []
     self.blocked_users ||= []
 
     # Aynı kişi, zaten arkadaş ya da engellenmişse ekleme
-    return false if self == friend || self.friends.include?(friend.id.to_s) || self.blocked_users.include?(friend.id.to_s)
+    return false if self == friend || self.friends.include?(friend.first_name.to_s) || self.blocked_users.include?(friend.id.to_s)
 
     # Arkadaşı listeye ekle
     self.friends << friend.id.to_s
